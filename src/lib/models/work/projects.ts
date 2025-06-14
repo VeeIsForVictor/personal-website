@@ -1,7 +1,7 @@
-import { array, isoDate, object, optional, pipe, string, url, type InferOutput } from "valibot";
-import { BaseCollection } from "../base";
-import { cleanHtml, compileMarkdown } from "$lib/model-utilities";
-import { Skills } from "./skills";
+import { array, isoDate, object, optional, pipe, string, url, type InferOutput } from 'valibot';
+import { BaseCollection } from '../base';
+import { cleanHtml, compileMarkdown } from '$lib/model-utilities';
+import { Skills } from './skills';
 
 export const Project = object({
     ...BaseCollection.entries,
@@ -9,7 +9,7 @@ export const Project = object({
     project_date: pipe(string(), isoDate()),
     repository_link: pipe(string(), url()),
     description: pipe(string(), compileMarkdown, cleanHtml),
-	skills: optional(Skills)
+    skills: optional(Skills),
 });
 
 export const Projects = array(Project);

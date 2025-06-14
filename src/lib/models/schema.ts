@@ -8,13 +8,13 @@ import { Projects } from './work/projects';
 import { About } from './about/about';
 
 export const Schema = object({
-	blog: Blog,
-	blog_posts: BlogPosts,
-	blog_posts_tags: BlogPostsTags,
-	tags: Tags,
-	skills: Skills,
-	projects: Projects,
-	about: About
+    blog: Blog,
+    blog_posts: BlogPosts,
+    blog_posts_tags: BlogPostsTags,
+    tags: Tags,
+    skills: Skills,
+    projects: Projects,
+    about: About,
 });
 
 export type Schema = InferOutput<typeof Schema>;

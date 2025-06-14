@@ -1,7 +1,7 @@
 import { array, object, string, type InferOutput } from 'valibot';
 
 export const Tag = object({
-	tag_name: string()
+    tag_name: string(),
 });
 
 export const Tags = array(Tag);

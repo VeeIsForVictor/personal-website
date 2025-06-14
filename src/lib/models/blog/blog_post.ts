@@ -3,11 +3,11 @@ import { object, pipe, string, uuid, array, type InferOutput, nullable } from 'v
 import { BaseCollection } from '../base';
 
 export const BlogPost = object({
-	...BaseCollection.entries,
-	title: string(),
-	author: nullable(pipe(string(), uuid())),
-	slug: string(),
-	post_content: nullable(pipe(string(), compileMarkdown, cleanHtml))
+    ...BaseCollection.entries,
+    title: string(),
+    author: nullable(pipe(string(), uuid())),
+    slug: string(),
+    post_content: nullable(pipe(string(), compileMarkdown, cleanHtml)),
 });
 
 export const BlogPosts = array(BlogPost);
