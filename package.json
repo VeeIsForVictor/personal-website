@@ -44,6 +44,7 @@
         ]
     },
     "dependencies": {
+        "@directus/sdk": "^19.1.0",
         "@types/node": "^24.0.1",
         "@types/sanitize-html": "^2.16.0",
         "marked": "^15.0.12",
