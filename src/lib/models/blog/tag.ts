@@ -1,4 +1,4 @@
-import { array, object, string, type InferOutput } from 'valibot';
+import { type InferOutput, array, object, string } from 'valibot';
 
 export const Tag = object({
     tag_name: string(),

@@ -1,5 +1,5 @@
+import { type InferOutput, array, nullable, object, pipe, string, uuid } from 'valibot';
 import { cleanHtml, compileMarkdown } from '$lib/model-utilities';
-import { object, pipe, string, uuid, array, type InferOutput, nullable } from 'valibot';
 import { BaseCollection } from '../base';
 
 export const BlogPost = object({

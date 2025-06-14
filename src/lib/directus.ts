@@ -1,6 +1,6 @@
 import { createDirectus, rest } from '@directus/sdk';
 import { PUBLIC_APIURL } from '$env/static/public';
-import { type Schema } from './models/schema';
+import type { Schema } from '$lib/models/schema';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getDirectusInstance(fetch: any) {

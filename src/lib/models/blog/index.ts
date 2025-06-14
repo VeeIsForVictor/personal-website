@@ -1,6 +1,6 @@
-import { cleanHtml } from '$lib/model-utilities';
-import { object, pick, pipe, string, type InferOutput } from 'valibot';
+import { type InferOutput, object, pick, pipe, string } from 'valibot';
 import { BaseCollection } from '../base';
+import { cleanHtml } from '$lib/model-utilities';
 
 export const Blog = object({
     ...pick(BaseCollection, ['date_created', 'date_updated']).entries,

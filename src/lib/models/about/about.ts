@@ -1,6 +1,6 @@
-import { nullable, object, pick, pipe, string, type InferOutput } from 'valibot';
-import { BaseCollection } from '../base';
+import { type InferOutput, nullable, object, pick, pipe, string } from 'valibot';
 import { cleanHtml, compileMarkdown } from '$lib/model-utilities';
+import { BaseCollection } from '../base';
 
 export const About = object({
     ...pick(BaseCollection, ['id']).entries,

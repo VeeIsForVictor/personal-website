@@ -1,11 +1,11 @@
-import { object, type InferOutput } from 'valibot';
-import { BlogPosts } from './blog/blog_post';
-import { Blog } from './blog';
-import { Tags } from './blog/tag';
-import { BlogPostsTags } from './blog/blog_posts_tags';
-import { Skills } from './work/skills';
-import { Projects } from './work/projects';
+import { type InferOutput, object } from 'valibot';
 import { About } from './about/about';
+import { Blog } from './blog';
+import { BlogPosts } from './blog/blog_post';
+import { BlogPostsTags } from './blog/blog_posts_tags';
+import { Projects } from './work/projects';
+import { Skills } from './work/skills';
+import { Tags } from './blog/tag';
 
 export const Schema = object({
     blog: Blog,

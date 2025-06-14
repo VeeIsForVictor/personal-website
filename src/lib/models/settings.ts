@@ -1,5 +1,5 @@
+import { type InferOutput, hexColor, nullable, object, pipe, string, url } from 'valibot';
 import { assetURL } from '$lib/model-utilities';
-import { hexColor, nullable, object, pipe, string, url, type InferOutput } from 'valibot';
 
 export const Settings = object({
     project_name: string(),

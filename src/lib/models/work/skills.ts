@@ -1,4 +1,4 @@
-import { object, string, array, type InferOutput, picklist } from 'valibot';
+import { type InferOutput, array, object, picklist, string } from 'valibot';
 import { BaseCollection } from '../base';
 import { imageUrlSchema } from '$lib/model-utilities';
 

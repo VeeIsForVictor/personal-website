@@ -1,4 +1,4 @@
-import { array, object, pipe, string, uuid, type InferOutput } from 'valibot';
+import { type InferOutput, array, object, pipe, string, uuid } from 'valibot';
 
 export const User = object({
     first_name: string(),

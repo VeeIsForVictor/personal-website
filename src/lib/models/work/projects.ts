@@ -1,6 +1,6 @@
-import { array, isoDate, object, optional, pipe, string, url, type InferOutput } from 'valibot';
-import { BaseCollection } from '../base';
+import { type InferOutput, array, isoDate, object, optional, pipe, string, url } from 'valibot';
 import { cleanHtml, compileMarkdown } from '$lib/model-utilities';
+import { BaseCollection } from '../base';
 import { Skills } from './skills';
 
 export const Project = object({

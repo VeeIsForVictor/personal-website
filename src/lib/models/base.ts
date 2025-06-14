@@ -1,5 +1,5 @@
+import { type InferOutput, number, object } from 'valibot';
 import { validateDateCreated, validateDateUpdated } from '$lib/model-utilities';
-import { number, object, type InferOutput } from 'valibot';
 
 export const BaseCollection = object({
     id: number(),

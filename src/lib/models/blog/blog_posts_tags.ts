@@ -1,4 +1,4 @@
-import { array, number, object, string, type InferOutput } from 'valibot';
+import { type InferOutput, array, number, object, string } from 'valibot';
 
 export const BlogPostTag = object({
     blog_posts_id: number(),
