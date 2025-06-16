@@ -1,5 +1,5 @@
-<div class="background p-10 flex flex-col bg-surface-50 dark:bg-surface-900">
-	<!-- <li></li>
+<div class="background bg-surface-50 dark:bg-surface-900 flex flex-col p-10">
+    <!-- <li></li>
 	<li></li>
 	<li></li>
 	<li></li>
@@ -15,34 +15,34 @@
 </div>
 
 <style>
-	@keyframes animate {
-		0% {
-			transform: translateY(0) rotate(0deg);
-			opacity: 1;
-			border-radius: 0;
-		}
-		100% {
-			transform: translateY(-1000px) rotate(720deg);
-			opacity: 0;
-			border-radius: 50%;
-		}
-	}
+    @keyframes animate {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+            border-radius: 0;
+        }
+        100% {
+            transform: translateY(-1000px) rotate(720deg);
+            opacity: 0;
+            border-radius: 50%;
+        }
+    }
 
-	.background {
-		position: fixed;
-		width: 100vw;
-		height: 100vh;
-		top: 0;
-		left: 0;
-		margin: 0;
-		padding: 0;
-		z-index: -10;
-		overflow: hidden;
-	}
-	
-	/* Dark mode support using a .dark class on a parent element */
+    .background {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        z-index: -10;
+        overflow: hidden;
+    }
 
-	/* .background li {
+    /* Dark mode support using a .dark class on a parent element */
+
+    /* .background li {
 		position: absolute;
 		display: block;
 		list-style: none;
