@@ -1,4 +1,5 @@
-<div class="background p-10 flex flex-col">
+<div class="background p-10 flex flex-col bg-surface-50 dark:bg-surface-900">
+	<!-- <li></li>
 	<li></li>
 	<li></li>
 	<li></li>
@@ -10,8 +11,7 @@
 	<li></li>
 	<li></li>
 	<li></li>
-	<li></li>
-	<li></li>
+	<li></li> -->
 </div>
 
 <style>
@@ -38,23 +38,17 @@
 		padding: 0;
 		z-index: -10;
 		overflow: hidden;
-
-		background: var(--color-primary-500);
-
-		@media (prefers-color-scheme: dark) {
-			background: var(--color-primary-900);
-		}
 	}
 	
 	/* Dark mode support using a .dark class on a parent element */
 
-	.background li {
+	/* .background li {
 		position: absolute;
 		display: block;
 		list-style: none;
 		width: 20px;
 		height: 20px;
-		background: rgba(255, 255, 255, 0.2);
+		opacity: 0.5;
 		animation: animate 25s linear infinite;
 	}
 
@@ -127,5 +121,5 @@
 		height: 127px;
 		bottom: -127px;
 		animation-delay: 33s;
-	}
+	} */
 </style>
