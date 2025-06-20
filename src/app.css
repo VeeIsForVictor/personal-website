@@ -9,8 +9,8 @@
 
 @theme {
     /* Font (Ubuntu) */
-    --font-sans: "Ubuntu", sans-serif;
-    
+    --font-sans: 'Ubuntu', sans-serif;
+
     /* Primary Colors (Blue) */
     --color-primary-50: #eef0fc;
     --color-primary-100: #dce1f8;
