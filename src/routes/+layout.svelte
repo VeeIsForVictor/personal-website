@@ -24,6 +24,6 @@
     </NavUl>
 </Navbar>
 
-<div class="container">
+<div class="mx-auto mt-8 xl:max-w-7xl max-w-lg">
     {@render children()}
 </div>
