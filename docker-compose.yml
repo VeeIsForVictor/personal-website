@@ -8,7 +8,7 @@ services:
       POSTGRES_USER_FILE: /run/secrets/db_user
       POSTGRES_PASSWORD_FILE: /run/secrets/db_password
     healthcheck:
-      test: ["CMD", "pg_isready", "--host=localhost", "--username=directus"]
+      test: ["CMD", "pg_isready", "--host=localhost", "--username=postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
