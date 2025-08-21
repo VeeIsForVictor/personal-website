@@ -1,5 +1,6 @@
 <script lang="ts">
     import '../app.css';
+    import Footer from '$lib/components/Footer.svelte';
     import NavBar from '$lib/components/NavBar.svelte';
 
     const { children } = $props();
@@ -11,5 +12,7 @@
     <main class="flex flex-col items-center justify-center h-full">
         {@render children()}
     </main>
+
+    <Footer />
 </div>
 
