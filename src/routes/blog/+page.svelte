@@ -6,7 +6,7 @@
     const { articles } = $derived(data);
 </script>
 
-<div class="space-y-6">
+<div class="grid grid-cols-3 gap-6">
     {#each articles as article (article.id)}
         <!-- This div acts as a "card" -->
         <div
