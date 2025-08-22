@@ -8,4 +8,7 @@ export const Article = v.object({
     content: v.string(),
 });
 
+export const Articles = v.array(Article);
+
 export type Article = v.InferOutput<typeof Article>;
+export type Articles = v.InferOutput<typeof Articles>;
