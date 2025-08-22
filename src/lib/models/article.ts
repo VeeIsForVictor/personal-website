@@ -2,7 +2,13 @@ import * as v from 'valibot';
 import { BaseSchema } from './base';
 
 export const Article = v.object({
-    ...BaseSchema(v.number()).entries,
+    ...BaseSchema(
+        v.pipe(
+            v.string(),
+            v.decimal(),
+            v.transform(value => parseInt(value, 10)),
+        ),
+    ).entries,
     title: v.string(),
     status: v.picklist(['draft', 'published', 'archived']),
     content: v.string(),
