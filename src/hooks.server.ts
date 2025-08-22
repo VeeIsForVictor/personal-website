@@ -1,3 +1,4 @@
+import getDirectusInstance from '$lib/directus';
 import { AssertionError } from 'assert';
 import { pino } from 'pino';
 import { PinoPretty as pretty } from 'pino-pretty';
@@ -18,6 +19,8 @@ export async function handle({ event, resolve }) {
     });
 
     locals.logger.info('request initiated');
+
+    locals.directus = getDirectusInstance();
 
     const start = performance.now();
     try {
