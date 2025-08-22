@@ -6,13 +6,12 @@
     const { children } = $props();
 </script>
 
-<div class="w-dvw flex flex-col items-center h-screen">
+<div class="flex h-screen w-dvw flex-col items-center">
     <NavBar />
 
-    <main class="flex flex-col items-center justify-center h-full">
+    <main class="flex h-full flex-col items-center justify-center">
         {@render children()}
     </main>
 
     <Footer />
 </div>
-
