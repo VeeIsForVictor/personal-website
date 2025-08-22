@@ -1,5 +1,5 @@
-import assert from "assert";
-import { env } from "$env/dynamic/private";
+import assert from 'assert';
+import { env } from '$env/dynamic/public';
 
-assert(typeof env.PUBLIC_APIURL !== 'undefined');
-export const { PUBLIC_APIURL } = env
+assert(typeof env.PUBLIC_APIURL !== 'undefined', 'PUBLIC_APIURL is not defined');
+export const { PUBLIC_APIURL } = env;
