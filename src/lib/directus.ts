@@ -1,11 +1,13 @@
-import { createDirectus, rest } from '@directus/sdk';
+import { createDirectus, graphql } from '@directus/sdk';
 import { PUBLIC_APIURL } from '$lib/server/env';
 import type { Schema } from '$lib/models/schema';
+import { ofetch } from 'ofetch';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getDirectusInstance(fetch: any) {
-    const options = fetch ? { globals: { fetch } } : {};
-    const directus = createDirectus<Schema>(PUBLIC_APIURL, options).with(rest());
+function getDirectusInstance() {
+    const directus = createDirectus<Schema>(PUBLIC_APIURL, { globals: { fetch: ofetch } }).with(
+        graphql(),
+    );
     return directus;
 }
 
