@@ -9,10 +9,10 @@
 <div class="grid grid-cols-3 gap-6">
     {#each articles as article (article.id)}
         <!-- This div acts as a "card" -->
-        <div
-            class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+        <a href="/blog/{article.slug}"
+            class="group block rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
         >
-            <h2 class="text-xl font-semibold text-gray-900">
+            <h2 class="group-hover:underline text-xl font-semibold text-gray-900">
                 {article.title}
             </h2>
             <p class="mb-4 text-sm text-gray-500">
@@ -31,10 +31,10 @@
                     {article.summary}
                 </p>
             {/if}
-            <Button.Root href='/blog/{article.slug}' onclick={() => toast.success(`Navigating to Article ${article.id}`)}>
+            <Button.Root class="group-hover:underline">
                 Read More
             </Button.Root>
-        </div>
+        </a>
     {/each}
 </div>
 
