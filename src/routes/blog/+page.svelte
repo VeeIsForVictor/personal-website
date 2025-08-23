@@ -1,5 +1,4 @@
 <script lang="ts">
-    import toast, { Toaster } from 'svelte-french-toast';
     import { Button } from 'bits-ui';
 
     const { data } = $props();
@@ -37,5 +36,3 @@
         </a>
     {/each}
 </div>
-
-<Toaster />
