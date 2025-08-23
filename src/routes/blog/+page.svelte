@@ -12,7 +12,7 @@
         <div
             class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
         >
-            <h2 class="mb-2 text-xl font-semibold text-gray-900">
+            <h2 class="text-xl font-semibold text-gray-900">
                 {article.title}
             </h2>
             <p class="mb-4 text-sm text-gray-500">
@@ -22,11 +22,16 @@
                     day: 'numeric',
                 })}
             </p>
-            <p class="mb-4 text-gray-700">
-                <!-- Placeholder for a future excerpt field -->
-                Article summary or excerpt will go here.
-            </p>
-            <Button.Root onclick={() => toast.success(`Navigating to Article ${article.id}`)}>
+            {#if article.summary === null}
+                <p class="mb-4 text-gray-500 italic text-sm">
+                    - No summary provided -
+                </p>
+            {:else}
+                <p class="mb-4 text-gray-900 text-sm">
+                    {article.summary}
+                </p>
+            {/if}
+            <Button.Root href='/blog/{article.slug}' onclick={() => toast.success(`Navigating to Article ${article.id}`)}>
                 Read More
             </Button.Root>
         </div>

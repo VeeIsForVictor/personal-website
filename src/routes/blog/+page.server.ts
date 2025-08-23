@@ -10,8 +10,9 @@ export async function load({ locals }) {
                 date_created
                 date_updated
                 title
+                slug
+                summary
                 status
-                content
             }
         }    
     `);

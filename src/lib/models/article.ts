@@ -10,8 +10,10 @@ export const Article = v.object({
         ),
     ).entries,
     title: v.string(),
+    slug: v.string(),
+    summary: v.nullable(v.string()),
     status: v.picklist(['draft', 'published', 'archived']),
-    content: v.string(),
+    content: v.optional(v.string()),
 });
 
 export const Articles = v.array(Article);
