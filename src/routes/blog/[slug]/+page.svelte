@@ -14,7 +14,7 @@
   </p>
 
   <!-- Article Content (Rendered HTML from Directus) -->
-  <div class="prose prose-lg max-w-none">
+  <div class="prose max-w-none">
     {@html article.content}
   </div>
 </article>
