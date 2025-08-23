@@ -1,88 +1,88 @@
 services:
-  db:
-    restart: unless-stopped
-    image: postgis/postgis:13-master
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER_FILE: /run/secrets/db_user
-      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
-    healthcheck:
-      test: ["CMD", "pg_isready", "--host=localhost", "--username=postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_interval: 5s
-      start_period: 30s
-    secrets:
-      - db_user
-      - db_password
-    volumes:
-      - ./docker-data/postgis-db:/var/lib/postgresql/data
+    db:
+        restart: unless-stopped
+        image: postgis/postgis:13-master
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_USER_FILE: /run/secrets/db_user
+            POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+        healthcheck:
+            test: ['CMD', 'pg_isready', '--host=localhost', '--username=postgres']
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_interval: 5s
+            start_period: 30s
+        secrets:
+            - db_user
+            - db_password
+        volumes:
+            - ./docker-data/postgis-db:/var/lib/postgresql/data
 
-  cache:
-    image: redis:6
-    healthcheck:
-      test: ["CMD-SHELL", "[ $$(redis-cli ping) = 'PONG' ]"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_interval: 5s
-      start_period: 30s
+    cache:
+        image: redis:6
+        healthcheck:
+            test: ['CMD-SHELL', "[ $$(redis-cli ping) = 'PONG' ]"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_interval: 5s
+            start_period: 30s
 
-  directus:
-    depends_on:
-      db:
-        condition: service_healthy
-      cache:
-        condition: service_healthy
-    restart: unless-stopped
-    image: directus/directus:11.10.2
-    ports:
-      - 8055:8055
-    environment:
-      SECRET: /run/secrets/secret
-      ADMIN_EMAIL_FILE: /run/secrets/admin_email
-      ADMIN_PASSWORD_FILE: /run/secrets/admin_password
-      WEBSOCKETS_ENABLED: "true"
-      PUBLIC_URL_FILE: /run/secrets/public_url
+    directus:
+        depends_on:
+            db:
+                condition: service_healthy
+            cache:
+                condition: service_healthy
+        restart: unless-stopped
+        image: directus/directus:11.10.2
+        ports:
+            - 8055:8055
+        environment:
+            SECRET: /run/secrets/secret
+            ADMIN_EMAIL_FILE: /run/secrets/admin_email
+            ADMIN_PASSWORD_FILE: /run/secrets/admin_password
+            WEBSOCKETS_ENABLED: 'true'
+            PUBLIC_URL_FILE: /run/secrets/public_url
 
-      DB_CLIENT: "pg"
-      DB_HOST: "db"
-      DB_PORT: "5432"
-      DB_DATABASE: "postgres"
-      DB_USER_FILE: /run/secrets/db_user
-      DB_PASSWORD_FILE: /run/secrets/db_password
+            DB_CLIENT: 'pg'
+            DB_HOST: 'db'
+            DB_PORT: '5432'
+            DB_DATABASE: 'postgres'
+            DB_USER_FILE: /run/secrets/db_user
+            DB_PASSWORD_FILE: /run/secrets/db_password
 
-      CACHE_ENABLED: "true"
-      CACHE_AUTO_PURGE: "true"
-      CACHE_STORE: "redis"
-      REDIS: "redis://cache:6379"
+            CACHE_ENABLED: 'true'
+            CACHE_AUTO_PURGE: 'true'
+            CACHE_STORE: 'redis'
+            REDIS: 'redis://cache:6379'
 
-      CORS_ENABLED: "true"
-      CORS_ORIGIN: "true"
-    secrets:
-      - db_user
-      - db_password
-      - secret
-      - admin_email
-      - admin_password
-      - public_url
-    volumes:
-      - ./docker-data/database:/directus/database
-      - ./docker-data/uploads:/directus/uploads
-      - ./docker-data/extensions:/directus/extensions
+            CORS_ENABLED: 'true'
+            CORS_ORIGIN: 'true'
+        secrets:
+            - db_user
+            - db_password
+            - secret
+            - admin_email
+            - admin_password
+            - public_url
+        volumes:
+            - ./docker-data/database:/directus/database
+            - ./docker-data/uploads:/directus/uploads
+            - ./docker-data/extensions:/directus/extensions
 
 secrets:
-  db_user:
-    file: ./docker-data/secrets/db_user.txt
-  db_password:
-    file: ./docker-data/secrets/db_password.txt
-  secret:
-    file: ./docker-data/secrets/secret.txt
-  admin_email:
-    file: ./docker-data/secrets/admin_email.txt
-  admin_password:
-    file: ./docker-data/secrets/admin_password.txt
-  public_url:
-    file: ./docker-data/secrets/public_url.txt
+    db_user:
+        file: ./docker-data/secrets/db_user.txt
+    db_password:
+        file: ./docker-data/secrets/db_password.txt
+    secret:
+        file: ./docker-data/secrets/secret.txt
+    admin_email:
+        file: ./docker-data/secrets/admin_email.txt
+    admin_password:
+        file: ./docker-data/secrets/admin_password.txt
+    public_url:
+        file: ./docker-data/secrets/public_url.txt
