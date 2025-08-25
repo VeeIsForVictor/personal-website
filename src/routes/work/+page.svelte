@@ -5,31 +5,55 @@
     const { projects } = $derived(data);
 </script>
 
-<div class="flex flex-col gap-6 max-w-4xl">
+<div class="flex flex-col gap-6 max-w-6xl">
     {#each projects as project (project.id)}
         <!-- This div acts as a "card" -->
-        <a
-            href="/work/{project.slug}"
-            class="group block rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
-        >
-            <h2 class="text-xl font-semibold text-gray-900 group-hover:underline">
-                {project.title}
-            </h2>
-            <p class="mb-4 text-sm text-gray-500">
-                Published on: {new Date(project.date_created).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                })}
-            </p>
-            {#if project.summary === null}
-                <p class="mb-4 text-sm text-gray-500 italic">- No summary provided -</p>
-            {:else}
-                <p class="mb-4 text-sm text-gray-900">
-                    {@html project.summary}
+        {#if project.project_url}
+            <a
+                href="{project.project_url}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group block rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+            >
+                <h2 class="text-xl font-semibold text-gray-900 group-hover:underline">
+                    {project.title}
+                </h2>
+                <p class="mb-4 text-sm text-gray-500">
+                    Published on: {new Date(project.date_created).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                    })}
                 </p>
-            {/if}
-            <Button.Root class="group-hover:underline">Read More</Button.Root>
-        </a>
+                {#if project.summary === null}
+                    <p class="mb-4 text-sm text-gray-500 italic">- No summary provided -</p>
+                {:else}
+                    <p class="mb-4 text-sm text-gray-900">
+                        {@html project.summary}
+                    </p>
+                {/if}
+                <Button.Root class="group-hover:underline">Visit the project</Button.Root>
+            </a>
+        {:else}
+            <div class="group block rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+                <h2 class="text-xl font-semibold text-gray-900">
+                    {project.title}
+                </h2>
+                <p class="mb-4 text-sm text-gray-500">
+                    Published on: {new Date(project.date_created).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                    })}
+                </p>
+                {#if project.summary === null}
+                    <p class="mb-4 text-sm text-gray-500 italic">- No summary provided -</p>
+                {:else}
+                    <p class="mb-4 text-sm text-gray-900">
+                        {@html project.summary}
+                    </p>
+                {/if}
+            </div>
+        {/if}
     {/each}
 </div>
