@@ -2,7 +2,7 @@
     import { Label, NavigationMenu, Switch } from 'bits-ui';
 </script>
 
-<NavigationMenu.Root class="w-full rounded-lg bg-white p-4 shadow-md">
+<NavigationMenu.Root class="w-full p-4 shadow-md dark:bg-primary-950">
     <NavigationMenu.List class="mx-auto flex w-1/2 items-center justify-around">
         <NavigationMenu.Item>
             <NavigationMenu.Link href="/">Home</NavigationMenu.Link>

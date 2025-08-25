@@ -6,10 +6,10 @@
     const { children } = $props();
 </script>
 
-<div class="flex h-screen w-dvw flex-col items-center">
+<div class="flex h-screen w-dvw flex-col items-center bg-primary-900 dark:text-white">
     <NavBar />
 
-    <main class="flex h-full flex-col items-center justify-center">
+    <main class="flex h-full flex-col items-center justify-center max-w-6xl px-4 mx-4 rounded-lg shadow-lg overflow-auto">
         {@render children()}
     </main>
 

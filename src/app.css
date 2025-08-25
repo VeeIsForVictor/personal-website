@@ -8,15 +8,15 @@
     --font-serif: DM Serif Display, 'serif';
     --font-mono: DM Mono, 'monospace';
 
-    --color-primary-50: #EEF5FF;
-    --color-primary-100: #D9E8FF;
-    --color-primary-200: #BCD8FF;
-    --color-primary-300: #8EBFFF;
-    --color-primary-400: #599DFF;
-    --color-primary-500: #3377FF;
-    --color-primary-600: #1B55F5;
-    --color-primary-700: #1440E1;
-    --color-primary-800: #1735B6;
-    --color-primary-900: #19328F;
-    --color-primary-950: #142057;
+    --color-primary-50:  #fafafa;
+    --color-primary-100: #ececee;
+    --color-primary-200: #dedee2;
+    --color-primary-300: #cfd0d6;
+    --color-primary-400: #c1c2ca;
+    --color-primary-500: #9a9ba6;
+    --color-primary-600: #747683;
+    --color-primary-700: #4e505f;
+    --color-primary-800: #2f313c;
+    --color-primary-900: #1f2028;
+    --color-primary-950: #101115;
 }
