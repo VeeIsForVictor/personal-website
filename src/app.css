@@ -19,4 +19,16 @@
     --color-primary-800: #2f313c;
     --color-primary-900: #1f2028;
     --color-primary-950: #101115;
+
+    --color-accent-50:  #fffbea;
+    --color-accent-100: #fff6d1;
+    --color-accent-200: #fff3b3;
+    --color-accent-300: #ffef8f;
+    --color-accent-400: #ffe96b;
+    --color-accent-500: #ffe347;
+    --color-accent-600: #ffdf2f;
+    --color-accent-700: #ffdb1f;
+    --color-accent-800: #ffd70f;
+    --color-accent-900: #ffd300;
+    --color-accent-950: #ffe637;
 }
