@@ -6,7 +6,7 @@
 <!-- Main article container with max-width for readability -->
 <article class="mx-auto max-w-3xl px-4 py-8">
     <!-- Article Title -->
-    <h1 class="mb-4 text-4xl font-bold text-gray-900">{article.title}</h1>
+    <h1 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">{article.title}</h1>
 
     <!-- Publication Date -->
     <p class="mb-8 text-sm text-gray-500">
@@ -18,7 +18,7 @@
     </p>
 
     <!-- Article Content (Rendered HTML from Directus) -->
-    <div class="prose max-w-none">
+    <div class="prose dark:prose-invert max-w-none">
         {@html article.content}
     </div>
 </article>
