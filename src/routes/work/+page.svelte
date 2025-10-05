@@ -28,9 +28,9 @@
                 {#if project.summary === null}
                     <p class="mb-4 text-sm text-gray-500 italic">- No summary provided -</p>
                 {:else}
-                    <p class="mb-4 text-sm text-gray-900">
+                    <div class="prose mb-4 text-sm">
                         {@html project.summary}
-                    </p>
+                    </div>
                 {/if}
                 <Button.Root class="group-hover:underline">Visit the project</Button.Root>
             </a>
@@ -49,9 +49,9 @@
                 {#if project.summary === null}
                     <p class="mb-4 text-sm text-gray-500 italic">- No summary provided -</p>
                 {:else}
-                    <p class="mb-4 text-sm text-gray-900">
+                    <div class="prose mb-4 text-sm">
                         {@html project.summary}
-                    </p>
+                    </div>
                 {/if}
             </div>
         {/if}
