@@ -5,7 +5,7 @@
     const { projects } = $derived(data);
 </script>
 
-<div class="flex flex-col gap-6 max-w-6xl">
+<div class="flex flex-col gap-6 w-sm my-4 lg:w-auto lg:max-w-4xl">
     {#each projects as project (project.id)}
         <!-- This div acts as a "card" -->
         {#if project.project_url}
