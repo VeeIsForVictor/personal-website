@@ -4,7 +4,7 @@
 </script>
 
 <!-- Main article container with max-width for readability -->
-<article class="mx-auto max-w-3xl px-4 py-8">
+<article class="mx-auto max-w-3xl px-4 py-8 w-sm lg:min-w-xl">
     <!-- Article Title -->
     <h1 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">{article.title}</h1>
 
