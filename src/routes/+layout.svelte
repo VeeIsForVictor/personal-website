@@ -6,6 +6,10 @@
     const { children } = $props();
 </script>
 
+<svelte:head>
+    <title>VeeIsForVictor - Personal</title>
+</svelte:head>
+
 <div class="flex min-h-screen my-0 w-dvw flex-col items-center bg-primary-900 dark:text-white">
     <NavBar />
 
