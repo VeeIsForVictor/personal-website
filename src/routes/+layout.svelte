@@ -9,7 +9,7 @@
 <div class="flex h-auto my-0 w-dvw flex-col items-center bg-primary-900 dark:text-white">
     <NavBar />
 
-    <main class="flex min-h-screen flex-col items-center justify-center max-w-6xl px-4 mx-4 rounded-lg shadow-lg overflow-hidden">
+    <main class="flex min-h-screen flex-col items-center justify-center max-w-6xl px-4 mx-4 overflow-hidden">
         {@render children()}
     </main>
 
