@@ -2,7 +2,7 @@
     import { Separator } from 'bits-ui';
 </script>
 
-<footer class="flex w-full flex-col p-4 shadow-md dark:bg-primary-950">
+<footer class="flex z-20 w-full flex-col p-4 shadow-md dark:bg-primary-950">
     <div class="w-fit">
         <p>Victor Edwin Reyes</p>
         <a href="mailto:reyes@veeisforvictor.work">reyes@veeisforvictor.work</a>
