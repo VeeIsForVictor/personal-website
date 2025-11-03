@@ -1,8 +1,8 @@
 import * as v from 'valibot';
-import { BaseSchema } from './base';
+import { buildBaseSchema } from './base';
 
 export const Article = v.object({
-    ...BaseSchema(
+    ...buildBaseSchema(
         v.pipe(
             v.string(),
             v.decimal(),

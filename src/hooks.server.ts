@@ -1,5 +1,5 @@
-import getDirectusInstance from '$lib/directus';
 import { AssertionError } from 'assert';
+import getDirectusInstance from '$lib/directus';
 import { pino } from 'pino';
 import { PinoPretty as pretty } from 'pino-pretty';
 

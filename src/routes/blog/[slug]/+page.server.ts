@@ -2,7 +2,7 @@ import { Article } from '$lib/models/article';
 import { parse } from 'valibot';
 
 export async function load({ params, locals }) {
-    const directus = locals.directus;
+    const { directus } = locals;
     const articleResult = await directus.query<Article>(`
         query {
             articles(filter: { slug: { _eq: "${params.slug}" } }) {
