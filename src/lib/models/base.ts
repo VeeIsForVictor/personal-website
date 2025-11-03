@@ -7,4 +7,4 @@ export function buildBaseSchema(idSchema: v.BaseSchema<any, any, v.BaseIssue<unk
         date_created: v.string(),
         date_updated: v.nullable(v.string()),
     });
-};
+}
