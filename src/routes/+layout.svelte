@@ -10,10 +10,12 @@
     <title>VeeIsForVictor - Personal</title>
 </svelte:head>
 
-<div class="flex min-h-screen my-0 w-dvw flex-col items-center bg-primary-900 dark:text-white">
+<div class="bg-primary-900 my-0 flex min-h-screen w-dvw flex-col items-center dark:text-white">
     <NavBar />
 
-    <main class="flex flex-grow h-full z-0 flex-col items-center justify-center max-w-6xl px-4 mx-4">
+    <main
+        class="z-0 mx-4 flex h-full max-w-6xl flex-grow flex-col items-center justify-center px-4"
+    >
         {@render children()}
     </main>
 

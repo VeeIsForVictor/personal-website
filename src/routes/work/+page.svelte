@@ -5,12 +5,12 @@
     const { projects } = $derived(data);
 </script>
 
-<div class="flex flex-col gap-6 w-sm my-4 lg:w-auto lg:max-w-4xl">
+<div class="my-4 flex w-sm flex-col gap-6 lg:w-auto lg:max-w-4xl">
     {#each projects as project (project.id)}
         <!-- This div acts as a "card" -->
         {#if project.project_url}
             <a
-                href="{project.project_url}"
+                href={project.project_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="group block rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
@@ -35,7 +35,9 @@
                 <Button.Root class="group-hover:underline">Visit the project</Button.Root>
             </a>
         {:else}
-            <div class="group block rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div
+                class="group block rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+            >
                 <h2 class="text-xl font-semibold text-gray-900">
                     {project.title}
                 </h2>

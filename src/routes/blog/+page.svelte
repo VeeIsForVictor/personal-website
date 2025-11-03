@@ -5,7 +5,7 @@
     const { articles } = $derived(data);
 </script>
 
-<div class="flex flex-col lg:grid lg:grid-cols-3 gap-6 max-w-6xl">
+<div class="flex max-w-6xl flex-col gap-6 lg:grid lg:grid-cols-3">
     {#each articles as article (article.id)}
         <!-- This div acts as a "card" -->
         <a
