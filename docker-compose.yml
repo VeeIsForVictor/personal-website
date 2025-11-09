@@ -21,6 +21,7 @@ services:
             - ./docker-data/postgis-db:/var/lib/postgresql/data
 
     cache:
+        restart: unless-stopped
         image: redis:6
         healthcheck:
             test: ['CMD-SHELL', "[ $$(redis-cli ping) = 'PONG' ]"]
