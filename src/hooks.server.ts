@@ -20,7 +20,9 @@ export async function handle({ event, resolve }) {
 
     locals.logger.info('request initiated');
 
-    locals.directus = getDirectusInstance();
+    const directus = getDirectusInstance();
+
+    locals.directus = directus;
 
     const start = performance.now();
     try {

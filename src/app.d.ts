@@ -1,7 +1,8 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 
-import type { DirectusClient } from '@directus/sdk';
+import type { DirectusClient, GraphqlClient } from '@directus/sdk';
 import type { Logger } from 'pino';
+import type { Schema } from '$lib/models/schema';
 
 // for information about these interfaces
 declare global {
@@ -9,7 +10,7 @@ declare global {
         // interface Error {}
         interface Locals {
             logger: Logger;
-            directus: DirectusClient;
+            directus: DirectusClient<Schema> & GraphqlClient<Schema>;
         }
         // interface PageData {}
         // interface PageState {}
