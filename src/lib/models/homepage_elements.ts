@@ -1,7 +1,7 @@
 import * as v from 'valibot';
 import { buildBaseSchema } from './base';
 
-export const hBlockBase = v.object({
+const hBlockBase = v.object({
     ...buildBaseSchema(
         v.pipe(
             v.string(),
@@ -23,6 +23,8 @@ export const hBlockHero = v.object({
     image: v.nullable(v.pipe(v.string(), v.uuid()))
 })
 
+export type hBlockHero = v.InferOutput<typeof hBlockHero>;
+
 export const hBlockCardgroup = v.variant('group_type', [
     v.object({
         ...hBlockBase.entries,
@@ -35,3 +37,5 @@ export const hBlockCardgroup = v.variant('group_type', [
         custom_cards: v.null() // to change once the custom schema gets defined
     })
 ])
+
+export type hBlockCardgroup = v.InferOutput<typeof hBlockCardgroup>;
