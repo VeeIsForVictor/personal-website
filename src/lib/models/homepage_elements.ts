@@ -39,3 +39,11 @@ export const hBlockCardgroup = v.variant('group_type', [
 ])
 
 export type hBlockCardgroup = v.InferOutput<typeof hBlockCardgroup>;
+
+export const homepageElementsData = v.object({
+    id: v.number(),
+    item: v.string(),
+    collection: v.picklist(['HBlock_hero', 'HBlock_cardgroup'])
+})
+
+export type homepageElementsData = v.InferOutput<typeof homepageElementsData>;
