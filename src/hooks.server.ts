@@ -2,6 +2,7 @@ import { AssertionError } from 'assert';
 import getDirectusInstance from '$lib/directus';
 import { pino } from 'pino';
 import { PinoPretty as pretty } from 'pino-pretty';
+import { dev } from '$app/environment';
 
 // keep pretty transport always
 const stream = pretty();
@@ -17,6 +18,8 @@ export async function handle({ event, resolve }) {
         method: request.method,
         url: request.url,
     });
+
+    locals.logger.level = dev ? 'trace' : 'warn';
 
     locals.logger.info('request initiated');
 
