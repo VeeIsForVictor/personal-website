@@ -23,10 +23,15 @@ export const hBlockHero = v.object({
     image: v.nullable(v.pipe(v.string(), v.uuid()))
 })
 
-export const cardGroupType = v.picklist(['articles', 'custom'])
-
-export const hBlockCardgroup = v.object({
-    ...hBlockBase.entries,
-    group_type: cardGroupType,
-    articles: v.optional(v.array(v.number()))
-})
+export const hBlockCardgroup = v.variant('group_type', [
+    v.object({
+        ...hBlockBase.entries,
+        group_type: v.literal('articles'),
+        articles: v.nullable(v.array(v.number()))
+    }),
+    v.object({
+        ...hBlockBase.entries,
+        group_type: v.literal('custom'),
+        custom_cards: v.null() // to change once the custom schema gets defined
+    })
+])
