@@ -1,7 +1,7 @@
 import * as v from 'valibot';
 import { buildBaseSchema } from './base';
 
-const hBlockBase = v.object({
+const HBlockBase = v.object({
     ...buildBaseSchema(
         v.pipe(
             v.string(),
@@ -12,8 +12,8 @@ const hBlockBase = v.object({
     content: v.nullable(v.string()),
 })
 
-export const hBlockHero = v.object({
-    ...hBlockBase.entries,
+export const HBlockHero = v.object({
+    ...HBlockBase.entries,
     buttons: v.array(
         v.object({
             label: v.string(),
@@ -23,27 +23,27 @@ export const hBlockHero = v.object({
     image: v.nullable(v.pipe(v.string(), v.uuid()))
 })
 
-export type hBlockHero = v.InferOutput<typeof hBlockHero>;
+export type HBlockHero = v.InferOutput<typeof HBlockHero>;
 
-export const hBlockCardgroup = v.variant('group_type', [
+export const HBlockCardgroup = v.variant('group_type', [
     v.object({
-        ...hBlockBase.entries,
+        ...HBlockBase.entries,
         group_type: v.literal('articles'),
         articles: v.nullable(v.array(v.number()))
     }),
     v.object({
-        ...hBlockBase.entries,
+        ...HBlockBase.entries,
         group_type: v.literal('custom'),
         custom_cards: v.null() // to change once the custom schema gets defined
     })
 ])
 
-export type hBlockCardgroup = v.InferOutput<typeof hBlockCardgroup>;
+export type HBlockCardgroup = v.InferOutput<typeof HBlockCardgroup>;
 
-export const homepageElementsData = v.object({
+export const HomepageElementsData = v.object({
     id: v.number(),
     item: v.string(),
     collection: v.picklist(['HBlock_hero', 'HBlock_cardgroup'])
 })
 
-export type homepageElementsData = v.InferOutput<typeof homepageElementsData>;
+export type HomepageElementsData = v.InferOutput<typeof HomepageElementsData>;
