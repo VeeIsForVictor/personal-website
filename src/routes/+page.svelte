@@ -5,9 +5,9 @@
     const { homepageElements, promisedArticles } = $derived(data);
 </script>
 
-<div class="flex flex-col">
+<div class="flex flex-col gap-8">
     {#each homepageElements as element}
-        <div class="gap-2">
+        <div>
             {#if element.collection === 'HBlock_hero'}
                 <Hero heroBlockData={element.item} />
             {/if}
