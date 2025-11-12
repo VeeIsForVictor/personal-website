@@ -54,9 +54,9 @@ export async function load({ locals }) {
 
     const promisedArticles = articleIds.map(
         async (id) => {
-            const {articles: [articleResult, ..._rest]} = directus.query(`
+            const { articles: [articleResult, ..._rest] } = await directus.query(`
                 query {
-                    articles(filter: { slug: { _eq: "${id}" } }) {
+                    articles(filter: { id: { _eq: "${id}" } }) {
                         id
                         date_created
                         date_updated
