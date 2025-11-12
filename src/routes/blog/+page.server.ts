@@ -3,7 +3,7 @@ import { parse } from 'valibot';
 
 export async function load({ locals }) {
     const { directus } = locals;
-    const articlesResult = await directus.query<Articles>(`
+    const articlesResult: { articles: Articles } = await directus.query<Articles>(`
         query {
             articles(filter: { status: { _eq: "published" } }) {
                 id

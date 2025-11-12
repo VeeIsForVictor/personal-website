@@ -1,5 +1,6 @@
 import * as v from 'valibot';
 import { buildBaseSchema } from './base';
+import { Article } from './article';
 
 const HBlockBase = v.object({
     ...buildBaseSchema(
@@ -14,11 +15,11 @@ const HBlockBase = v.object({
 
 export const HBlockHero = v.object({
     ...HBlockBase.entries,
-    buttons: v.array(
+    buttons: v.nullable(v.array(
         v.object({
             label: v.string(),
             href: v.string()
-        })
+        }))
     ),
     image: v.nullable(v.pipe(v.string(), v.uuid()))
 })
@@ -29,7 +30,11 @@ export const HBlockCardgroup = v.variant('group_type', [
     v.object({
         ...HBlockBase.entries,
         group_type: v.literal('articles'),
-        articles: v.nullable(v.array(v.number()))
+        articles: v.array(v.object({ id: v.pipe(
+                    v.string(),
+                    v.decimal(),
+                    v.transform(value => parseInt(value, 10)),
+                ), }))
     }),
     v.object({
         ...HBlockBase.entries,
@@ -40,10 +45,15 @@ export const HBlockCardgroup = v.variant('group_type', [
 
 export type HBlockCardgroup = v.InferOutput<typeof HBlockCardgroup>;
 
-export const HomepageElementsData = v.object({
-    id: v.number(),
-    item: v.string(),
-    collection: v.picklist(['HBlock_hero', 'HBlock_cardgroup'])
-})
+export const HomepageElementsData = v.variant('collection', [
+    v.object({
+        collection: v.literal('HBlock_hero'),
+        item: HBlockHero,
+    }),
+    v.object({
+        collection: v.literal('HBlock_cardgroup'),
+        item: HBlockCardgroup,
+    })
+])
 
 export type HomepageElementsData = v.InferOutput<typeof HomepageElementsData>;
