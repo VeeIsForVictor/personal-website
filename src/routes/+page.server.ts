@@ -16,7 +16,10 @@ export async function load({ locals }) {
                         headline
                         content
                         buttons
-                        image
+                        image {
+                            id
+                            description
+                        }
                     }
                     ... on HBlock_cardgroup {
                         id
