@@ -14,7 +14,7 @@
     {#if image !== null}
         <div class="w-1/4 mx-auto overflow-visible transform translate-y-7 lg:translate-y-0 z-10">
             <img
-                class="aspect-square rounded-2xl shadow-sm w-full h-auto object-cover border border-primary-800"
+                class="aspect-square rounded-2xl shadow-sm w-full h-auto lg:w-auto lg:h-48 object-cover border border-primary-800"
                 src={image.id}
                 alt={image.description}
             />
