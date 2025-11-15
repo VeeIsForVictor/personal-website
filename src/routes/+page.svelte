@@ -5,18 +5,18 @@
     const { homepageElements, promisedArticles } = $derived(data);
 </script>
 
-<div class="flex flex-col grow items-center gap-4">
+<div class="flex grow flex-col items-center gap-4">
     {#each homepageElements as element, idx}
         {#if idx == 0}
-            <div class="w-screen bg-linear-to-b from-primary-950 to-primary-900 pt-12">
-                <div class="flex w-5/6 mx-auto">
+            <div class="from-primary-950 to-primary-900 w-screen bg-linear-to-b pt-12">
+                <div class="mx-auto flex w-5/6">
                     {#if element.collection === 'HBlock_hero'}
                         <Hero heroBlockData={element.item} />
                     {/if}
                 </div>
             </div>
         {:else}
-            <div class="flex w-5/6 mx-auto last:pb-12">
+            <div class="mx-auto flex w-5/6 last:pb-12">
                 {#if element.collection === 'HBlock_hero'}
                     <Hero heroBlockData={element.item} />
                 {/if}

@@ -5,7 +5,9 @@ import { array, parse, parseAsync } from 'valibot';
 
 export async function load({ locals }) {
     const { directus, logger } = locals;
-    const { home_homepage_elements: homepageResult } = await directus.query<HomepageElementsData[]>(`
+    const { home_homepage_elements: homepageResult } = (await directus.query<
+        HomepageElementsData[]
+    >(`
         query {
             home_homepage_elements {
                 id
@@ -36,28 +38,31 @@ export async function load({ locals }) {
                 collection
             }
         }
-    `) as unknown as { home_homepage_elements: HomepageElementsData[] };
+    `)) as unknown as { home_homepage_elements: HomepageElementsData[] };
 
-    logger.trace({homepageResult}, 'elements fetch result');
+    logger.trace({ homepageResult }, 'elements fetch result');
 
     const homepageElements = parse(array(HomepageElementsData), homepageResult);
 
-    logger.trace({homepageElements}, 'elements parsed')
+    logger.trace({ homepageElements }, 'elements parsed');
 
-    const articleIds = homepageElements.filter(
-        (elem) => elem.collection == 'HBlock_cardgroup' && elem.item.group_type == 'articles'
-    ).map(
-        (articleGroup) => {
-            assert(articleGroup.collection == 'HBlock_cardgroup' && articleGroup.item.group_type == 'articles')
+    const articleIds = homepageElements
+        .filter(elem => elem.collection == 'HBlock_cardgroup' && elem.item.group_type == 'articles')
+        .map(articleGroup => {
+            assert(
+                articleGroup.collection == 'HBlock_cardgroup' &&
+                    articleGroup.item.group_type == 'articles',
+            );
             return articleGroup.item.articles.map(({ id }) => id);
-        }
-    ).flat()
+        })
+        .flat();
 
     logger.trace({ articleIds });
 
-    const promisedArticles = articleIds.map(
-        async (id) => {
-            const { articles: [articleResult, ..._rest] } = await directus.query(`
+    const promisedArticles = articleIds.map(async id => {
+        const {
+            articles: [articleResult, ..._rest],
+        } = (await directus.query(`
                 query {
                     articles(filter: { id: { _eq: "${id}" } }) {
                         id
@@ -70,10 +75,9 @@ export async function load({ locals }) {
                         content
                     }
                 }  
-            `) as unknown as { articles: Article[] }
-            return parse(Article, articleResult)
-        }
-    )
+            `)) as unknown as { articles: Article[] };
+        return parse(Article, articleResult);
+    });
 
-    return { homepageElements, promisedArticles }
+    return { homepageElements, promisedArticles };
 }
