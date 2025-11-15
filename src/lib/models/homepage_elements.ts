@@ -21,7 +21,7 @@ export const HBlockHero = v.object({
             href: v.string()
         }))
     ),
-    image: Image
+    image: v.nullable(Image)
 })
 
 export type HBlockHero = v.InferOutput<typeof HBlockHero>;
