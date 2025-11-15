@@ -9,7 +9,7 @@
     {#each homepageElements as element, idx}
         {#if idx == 0}
             <div class="w-screen bg-linear-to-b from-primary-950 to-primary-900">
-                <div class="w-5/6 mx-auto">
+                <div class="flex w-5/6 mx-auto">
                     {#if element.collection === 'HBlock_hero'}
                         <Hero heroBlockData={element.item} />
                     {/if}
