@@ -12,9 +12,9 @@
 
 <div class="flex flex-col lg:flex-row-reverse prose dark:prose-invert w-full">
     {#if image !== null}
-        <div class="w-1/4 m-auto overflow-clip">
+        <div class="w-1/2 m-auto overflow-hidden">
             <img 
-                class="aspect-square"
+                class="aspect-square rounded-2xl shadow-sm"
                 src={image.id} 
                 alt={image.description}
             >
