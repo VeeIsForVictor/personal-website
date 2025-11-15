@@ -10,7 +10,7 @@
     <title>VeeIsForVictor - Personal</title>
 </svelte:head>
 
-<div class="bg-primary-900 my-0 flex min-h-screen w-dvw flex-col items-center dark:text-white">
+<div class="bg-primary-900 my-0 flex min-h-screen w-dvw flex-col items-center dark:text-white overscroll-contain">
     <NavBar />
 
     <main
