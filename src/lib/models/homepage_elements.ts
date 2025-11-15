@@ -1,6 +1,6 @@
 import * as v from 'valibot';
 import { buildBaseSchema } from './base';
-import { imageIdToUrl } from './utils';
+import { Image } from './image';
 
 const HBlockBase = v.object({
     ...buildBaseSchema(
@@ -21,7 +21,7 @@ export const HBlockHero = v.object({
             href: v.string()
         }))
     ),
-    image: v.nullable(v.pipe(v.object({id: v.string()}), v.transform(({ id }) => id), v.string(), v.uuid(), imageIdToUrl))
+    image: Image
 })
 
 export type HBlockHero = v.InferOutput<typeof HBlockHero>;
