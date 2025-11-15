@@ -5,7 +5,7 @@
     const { homepageElements, promisedArticles } = $derived(data);
 </script>
 
-<div class="flex flex-col items-center gap-4">
+<div class="flex flex-col grow items-center gap-4">
     {#each homepageElements as element, idx}
         {#if idx == 0}
             <div class="w-screen bg-linear-to-b from-primary-950 to-primary-900">
