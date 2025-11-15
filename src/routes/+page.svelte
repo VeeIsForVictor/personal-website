@@ -16,7 +16,7 @@
                 </div>
             </div>
         {:else}
-            <div class="w-5/6 last:pb-12">
+            <div class="flex w-5/6 mx-auto last:pb-12">
                 {#if element.collection === 'HBlock_hero'}
                     <Hero heroBlockData={element.item} />
                 {/if}
