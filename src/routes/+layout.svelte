@@ -14,7 +14,7 @@
     <NavBar />
 
     <main
-        class="z-0 mx-4 flex h-full max-w-6xl flex-grow flex-col items-center justify-center px-4"
+        class="z-0 mx-4 flex h-full max-w-6xl m-0 grow flex-col items-center justify-center px-4"
     >
         {@render children()}
     </main>
