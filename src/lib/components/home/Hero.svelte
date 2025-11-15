@@ -24,7 +24,7 @@
         <h1>{heroBlockData.headline}</h1>
         <div>{@html heroBlockData.content}</div>
         {#if buttons !== null && buttons.length > 0}
-            <div>
+            <div class="flex gap-2">
                 {#each buttons as {label, href}}
                     <Button {href}>
                         {label}

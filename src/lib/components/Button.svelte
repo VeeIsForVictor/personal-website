@@ -10,6 +10,6 @@
     const { href, children }: Props = $props();
 </script>
 
-<Button.Root {href}>
+<Button.Root {href} class="rounded-xl bg-primary-50 py-2 px-4 text-sm text-black no-underline shadow-sm hover:cursor-pointer">
     {@render children?.()}
 </Button.Root>
