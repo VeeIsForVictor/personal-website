@@ -10,17 +10,17 @@
     const { buttons, image } = $derived(heroBlockData);
 </script>
 
-<div class="flex flex-col lg:flex-row-reverse prose dark:prose-invert w-full">
+<div class="flex flex-col lg:flex-row-reverse w-full">
     {#if image !== null}
-        <div class="w-1/2 m-auto overflow-hidden">
-            <img 
-                class="aspect-square rounded-2xl shadow-sm"
-                src={image.id} 
+        <div class="w-1/2 mx-auto overflow-visible mt-4 transform translate-y-4 z-10">
+            <img
+                class="aspect-square rounded-2xl shadow-sm w-full h-auto object-cover border border-primary-800"
+                src={image.id}
                 alt={image.description}
-            >
+            />
         </div>
     {/if}
-    <div class="flex flex-col">
+    <div class="flex flex-col p-4 border border-primary-800 rounded-xl prose dark:prose-invert">
         <h1>{heroBlockData.headline}</h1>
         <div>{@html heroBlockData.content}</div>
         {#if buttons !== null && buttons.length > 0}
