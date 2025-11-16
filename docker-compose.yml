@@ -63,7 +63,7 @@ services:
             CORS_ENABLED: 'true'
             CORS_ORIGIN: 'true'
         healthcheck:
-            test: ["curl", /run/secrets/public_url]
+            test: ["curl", "$PUBLIC_URL/server/health"]
             interval: 1m30s
             timeout: 30s
             retries: 5
@@ -90,7 +90,7 @@ services:
             - prod
         build: .
         environment:
-            PUBLIC_APIURL: /run/secrets/public_url
+            PUBLIC_APIURL_FILE: /run/secrets/public_url
         secrets:
             - public_url
 
