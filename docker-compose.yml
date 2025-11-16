@@ -62,6 +62,12 @@ services:
 
             CORS_ENABLED: 'true'
             CORS_ORIGIN: 'true'
+        healthcheck:
+            test: ["curl", /run/secrets/public_url]
+            interval: 1m30s
+            timeout: 30s
+            retries: 5
+            start_period: 30s
         secrets:
             - db_user
             - db_password
@@ -73,6 +79,20 @@ services:
             - ./docker-data/database:/directus/database
             - ./docker-data/uploads:/directus/uploads
             - ./docker-data/extensions:/directus/extensions
+
+    www: 
+        depends_on:
+            directus:
+                condition: service_healthy
+        ports:
+            - 3000:3000
+        profile:
+            - prod
+        build: .
+        environment:
+            PUBLIC_APIURL: /run/secrets/public_url
+        secrets:
+            - public_url
 
 secrets:
     db_user:
