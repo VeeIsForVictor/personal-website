@@ -19,7 +19,7 @@
         <div>{@html content}</div>
     </div>
     <div
-        class="grid min-w-1/3 grid-flow-col content-center items-center justify-items-stretch gap-4"
+        class="grid min-w-1/3 grid-cols-1 lg:grid-flow-col content-center items-center justify-items-stretch gap-4"
     >
         {#if group_type == 'articles'}
             {@const { articles } = cardgroupData}
@@ -29,7 +29,7 @@
                 .map(({ article }) => article)}
             {#each articleData as article}
                 <div
-                    class="divide-primary-700 bg-primary-800 border-primary-600 text-primary-50 hover:bg-primary-700 grid h-64 w-48 grid-cols-1 divide-y justify-self-center rounded-2xl border transition duration-150 ease-in-out hover:shadow-lg"
+                    class="divide-primary-700 bg-primary-800 border-primary-600 text-primary-50 hover:bg-primary-700 grid h-24 lg:h-64 w-full lg:w-48 grid-cols-1 divide-y justify-self-center rounded-2xl border transition duration-150 ease-in-out hover:shadow-lg"
                 >
                     {#await article}
                         <div>
