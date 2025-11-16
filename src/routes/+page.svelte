@@ -10,7 +10,7 @@
     {#each homepageElements as element, idx}
         {@const { collection, item } = element}
         {#if idx == 0}
-            <div class="flex flex-col grow items-center from-primary-950 to-primary-900 w-screen bg-linear-to-b pt-12">
+            <div class="flex flex-col h-[calc(100vh-56px)] lg:h-auto grow items-center from-primary-950 to-primary-900 w-screen bg-linear-to-b lg:pt-12">
                 <div class="flex my-auto self-center w-5/6">
                         {#if collection === 'HBlock_hero'}
                             <Hero heroBlockData={item} />
