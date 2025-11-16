@@ -81,7 +81,7 @@ export async function load({ locals }) {
 
     const promisedArticles = articleIds.map(id => ({
         id,
-        article: retrieveArticle(id)
+        article: retrieveArticle(id),
     }));
 
     return { homepageElements, promisedArticles };
