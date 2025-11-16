@@ -16,14 +16,14 @@
         <h1>{headline}</h1>
         <div>{@html content}</div>
     </div>
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-flow-col gap-4 min-w-1/3 items-center content-center justify-items-stretch">
         {#if group_type == 'articles'}
             {@const { articles } = cardgroupData}
             {@const articleIds = articles.map(({ id }) => id)}
             {@const articleData = promisedArticles.filter(({id}) => articleIds.includes(id)).map(({article}) => article)}
             {@debug promisedArticles, articleIds, articles}
             {#each articleData as article}
-                <div class="bg-primary-50">
+                <div class="bg-primary-800 rounded-2xl border border-primary-700 h-64 w-48 justify-self-center">
                     {#await article}
                         
                     {:then article}
