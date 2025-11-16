@@ -89,10 +89,9 @@ services:
         profiles:
             - prod
         build: .
-        environment:
-            PUBLIC_APIURL_FILE: /run/secrets/public_url
-        secrets:
-            - public_url
+        env_file:
+            - path: ./.env
+              required: true
 
 secrets:
     db_user:
