@@ -11,7 +11,7 @@
 </svelte:head>
 
 <div
-    class="bg-primary-900 my-0 flex min-h-screen w-dvw flex-col items-center overscroll-contain dark:text-white"
+    class="bg-primary-900 my-0 flex min-h-screen w-dvw flex-col items-center overscroll-contain dark:text-white overflow-x-clip"
 >
     <NavBar />
 
