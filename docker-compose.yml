@@ -63,11 +63,15 @@ services:
             CORS_ENABLED: 'true'
             CORS_ORIGIN: 'true'
         healthcheck:
-            test: ["CMD", 'curl', "http://localhost:8055/server/health"]
+            test: 
+                [
+                    "CMD-SHELL",
+                    "[ $$(wget -q -O - http://directus:8055/server/ping) = 'pong' ]",
+                ]
             interval: 30s
-            timeout: 30s
+            timeout: 5s
             retries: 5
-            start_period: 30s
+            start_period: 15s
         secrets:
             - db_user
             - db_password
