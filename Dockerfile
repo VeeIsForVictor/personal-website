@@ -8,12 +8,12 @@ COPY ./package*.json .
 COPY ./pnpm-lock.yaml .
 
 RUN npm i -g pnpm
-RUN npm install
+RUN pnpm install
 
 COPY . .
 
-RUN npm run build
-RUN npm prune --prod
+RUN pnpm build
+RUN pnpm prune --prod
 
 FROM node:lts-alpine AS deployer
 
