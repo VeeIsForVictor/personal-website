@@ -59,7 +59,7 @@ export async function load({ locals }) {
 
     logger.trace({ articleIds });
 
-    const promisedArticles = articleIds.map(async id => {
+    async function retrieveArticle(id: number) {
         const {
             articles: [articleResult, ..._rest],
         } = (await directus.query(`
@@ -75,9 +75,14 @@ export async function load({ locals }) {
                         content
                     }
                 }  
-            `)) as unknown as { articles: Article[] };
+        `)) as unknown as { articles: Article[] };
         return parse(Article, articleResult);
-    });
+    }
+
+    const promisedArticles = articleIds.map(id => ({
+        id,
+        article: retrieveArticle(id)
+    }));
 
     return { homepageElements, promisedArticles };
 }
