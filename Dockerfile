@@ -1,28 +1,29 @@
-# syntax=docker/dockerfile:1
+# This Dockerfile taken from the BastiDood/drap project
+FROM node:24.5.0-alpine3.22 AS build
 
-FROM node:lts-alpine AS builder
-
-WORKDIR /app
-
-COPY ./package*.json .
-COPY ./pnpm-lock.yaml .
-
-RUN npm i -g pnpm
-RUN pnpm install
-
-COPY . .
-
-RUN pnpm build
-RUN pnpm prune --prod
-
-FROM node:lts-alpine AS deployer
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable pnpm
 
 WORKDIR /app
 
-COPY --from=builder /app/build build/
-COPY --from=builder /app/node_modules node_modules/
-COPY package.json .
+# Only fetch the dependencies into the virtual store for better Docker caching.
+COPY pnpm-lock.yaml ./
+RUN pnpm fetch
 
-EXPOSE 3000
+# Then copy the project files and build the `node_modules/` (with dev dependencies).
+COPY . ./
+RUN pnpm install --offline
 
-CMD [ "node", "build" ]
+# build/ and node_modules/ are now ready for production.
+RUN pnpm build && pnpm prune --prod --ignore-scripts
+
+FROM gcr.io/distroless/nodejs24-debian12:nonroot-amd64 AS deploy
+
+WORKDIR /app
+COPY --from=build /app/node_modules node_modules/
+COPY --from=build /app/build/ build/
+
+ENV PORT=3000
+EXPOSE ${PORT}
+CMD ["build/index.js"]
