@@ -4,7 +4,7 @@ import { parse } from 'valibot';
 export async function load({ locals }) {
     const { directus, logger } = locals;
 
-    const { meta: metaResult } = directus.query(`
+    const { meta: metaResult } = await directus.query(`
         query {
             meta {
                 title
