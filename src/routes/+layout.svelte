@@ -3,12 +3,14 @@
     import Footer from '$lib/components/Footer.svelte';
     import NavBar from '$lib/components/NavBar.svelte';
 
-    const { children } = $props();
+    const { children, data } = $props();
+    const { meta: { title, description } } = data;
 </script>
 
 <svelte:head>
-    <title>VeeIsForVictor - Personal</title>
+    <title>{title}</title>
     <meta charset="utf-8" />
+    <meta name="description" content={description} />
 </svelte:head>
 
 <div
