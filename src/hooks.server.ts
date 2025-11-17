@@ -30,10 +30,18 @@ export async function handle({ event, resolve }) {
     const start = performance.now();
     try {
         const response = await resolve(event);
-        locals.logger.info({
-            status: response.status,
-            response_time: performance.now() - start,
-        });
+        const responseTime = performance.now() - start;
+        if (responseTime < 2000) {
+            locals.logger.info({
+                status: response.status,
+                response_time: responseTime
+            });
+        } else {
+            locals.logger.warn({
+                status: response.status,
+                response_time: responseTime
+            }, 'request took longer than 2s to serve')
+        }
         return response;
     } catch (error) {
         locals.logger.error({ error, response_time: performance.now() - start });
