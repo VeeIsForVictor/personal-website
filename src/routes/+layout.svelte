@@ -8,6 +8,7 @@
 
 <svelte:head>
     <title>VeeIsForVictor - Personal</title>
+    <meta charset="utf-8" />
 </svelte:head>
 
 <div
