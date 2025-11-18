@@ -14,9 +14,10 @@ logger.info('system started');
 
 export async function handle({ event, resolve }) {
     const { locals, request } = event;
+    const requestId = crypto.randomUUID();
 
     locals.logger = logger.child({
-        requestId: crypto.randomUUID(),
+        requestId,
         method: request.method,
         url: request.url,
     });
@@ -51,6 +52,11 @@ export async function handle({ event, resolve }) {
                 response_time: responseTime
             }, 'request took longer than 2s to serve')
         }
+        posthog.capture({
+            distinctId: requestId,
+            event: 'page_visited'
+        })
+
         await locals.posthog.shutdown();
         return response;
     } catch (error) {
