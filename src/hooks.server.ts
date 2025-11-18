@@ -3,6 +3,8 @@ import getDirectusInstance from '$lib/directus';
 import { pino } from 'pino';
 import { PinoPretty as pretty } from 'pino-pretty';
 import { dev } from '$app/environment';
+import { PostHog } from 'posthog-node';
+import { PUBLIC_POSTHOG_KEY } from '$lib/server/env';
 
 // keep pretty transport always
 const stream = pretty();
@@ -27,6 +29,13 @@ export async function handle({ event, resolve }) {
 
     locals.directus = directus;
 
+    const posthog = new PostHog(
+        PUBLIC_POSTHOG_KEY,
+        { host: 'https://us.i.posthog.com' }
+    )
+
+    locals.posthog = posthog;
+
     const start = performance.now();
     try {
         const response = await resolve(event);
@@ -42,9 +51,11 @@ export async function handle({ event, resolve }) {
                 response_time: responseTime
             }, 'request took longer than 2s to serve')
         }
+        await locals.posthog.shutdown();
         return response;
     } catch (error) {
         locals.logger.error({ error, response_time: performance.now() - start });
+        await locals.posthog.shutdown();
         throw error;
     }
 }
