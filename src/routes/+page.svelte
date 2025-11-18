@@ -6,12 +6,12 @@
     const { homepageElements, promisedArticles } = $derived(data);
 </script>
 
-<div class="flex grow flex-col items-center gap-4">
+<div class="flex grow flex-col w-full items-center gap-4">
     {#each homepageElements as element, idx}
         {@const { collection, item } = element}
         {#if idx == 0}
             <div
-                class="from-primary-950 to-primary-900 flex h-[calc(100vh-56px)] w-screen grow flex-col items-center bg-linear-to-b lg:h-auto lg:pt-12"
+                class="from-primary-950 to-primary-900 flex h-[calc(100vh-64px)] w-full grow flex-col items-center bg-linear-to-b lg:pt-12"
             >
                 <div class="my-auto flex w-5/6 self-center">
                     {#if collection === 'HBlock_hero'}
